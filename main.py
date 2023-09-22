@@ -15,7 +15,7 @@ def main():
         print(f"The '{item['char']}' character was found {item['num']} times")
 
     print("--- End report ---")   
-    print(chars_dict)
+   ## print(chars_dict)
 
 
 def get_num_words(text):
@@ -24,6 +24,13 @@ def get_num_words(text):
 
 def sort_on(d):
     return d["num"]
+
+def chars_dict_to_sorted_list(num_chars_dict):
+    sorted_list = []
+    for ch in num_chars_dict:
+        sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list
 
 def get_chars_dict(text):
     chars = {}
@@ -42,6 +49,15 @@ def chars_dict_to_sorted_list(num_chars_dict):
     sorted_list.sort(reverse=True, key=sort_on)
     return sorted_list
 
+def get_chars_dict(text):
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
 
 
 def get_character_sums(text):
